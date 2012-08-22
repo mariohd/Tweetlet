@@ -8,5 +8,16 @@
     <welcome-file>default.html</welcome-file>
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
+    <welcome-file>entrar.jsp</welcome-file>
   </welcome-file-list>
+  <servlet>
+    <description></description>
+    <display-name>FazerLogin</display-name>
+    <servlet-name>FazerLogin</servlet-name>
+    <servlet-class>servlets.FazerLogin</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>FazerLogin</servlet-name>
+    <url-pattern>/FazerLogin</url-pattern>
+  </servlet-mapping>
 </web-app>
