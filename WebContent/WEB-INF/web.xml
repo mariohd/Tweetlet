@@ -20,4 +20,14 @@
     <servlet-name>FazerLogin</servlet-name>
     <url-pattern>/FazerLogin</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>submeterNovoTweetlet</display-name>
+    <servlet-name>submeterNovoTweetlet</servlet-name>
+    <servlet-class>servlets.submeterNovoTweetlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>submeterNovoTweetlet</servlet-name>
+    <url-pattern>/submeterNovoTweetlet</url-pattern>
+  </servlet-mapping>
 </web-app>
