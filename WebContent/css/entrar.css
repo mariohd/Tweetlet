@@ -1,21 +1,8 @@
 @CHARSET "UTF-8";
 
-#menuNovoTweelet {
-    float: left;
-    width: 30%;
-    height: 0px;  
-  }
-  
- #listaTweetlets {
-    float: right;
-    width: 500px;
-    height: 0px;    
-  }
-  
-#mensagemBoasVindas {
-	font: italic;
-	font-family: sans-serif;
+#LoginFields {
+	font-size: large;
 }
-#afirmativa {
-	color: green;
+
+#pagina {
 }

@@ -30,4 +30,24 @@
     <servlet-name>submeterNovoTweetlet</servlet-name>
     <url-pattern>/submeterNovoTweetlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>retweeter</display-name>
+    <servlet-name>retweeter</servlet-name>
+    <servlet-class>servlets.retweeter</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>retweeter</servlet-name>
+    <url-pattern>/retweeter</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>responderTweet</display-name>
+    <servlet-name>responderTweet</servlet-name>
+    <servlet-class>servlets.responderTweet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>responderTweet</servlet-name>
+    <url-pattern>/responderTweet</url-pattern>
+  </servlet-mapping>
 </web-app>

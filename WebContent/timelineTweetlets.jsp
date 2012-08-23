@@ -10,16 +10,31 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<c:forEach var="tweet" items="${tweets }">
-		<div id=tweetletBody>${tweet.mensagem }</div>
-		<br />
-		<div id=tweetletOwner>
-		${tweet.dono.login }
-		<br />
-		${tweet.data }
-		</div>
-		<br />
-		<hr>
-	</c:forEach>
+	<div id=todosTweetlets>
+		<c:forEach var="tweet" items="${tweets }">
+			<div id=TweetletCompleto>
+				<div id=tweetletBody>${tweet.mensagem }</div>
+				<br />
+				<div id=tweetletOwner>
+					${tweet.dono.login } <br /> ${tweet.data }
+				</div>
+				<br /> <br />
+				<div id=acoesTweetlet>
+					<form method="post" action="retweeter">
+						<input type="hidden" value="${tweet.id }" id=tweetId name=tweetId>
+						<button type="submit" class=retweet>
+							<img src="imagens/retweelet.png" height="18" width="18" />
+						</button>
+					</form>
+					<form method="post" action="responderTweet">
+						<input type="hidden" value="${tweet.id }" id=tweetId name=tweetId>
+						<button type="submit">
+							<img src="imagens/resposta.png" height="18" width="18" />
+						</button>
+					</form>
+				</div>
+			</div>
+		</c:forEach>
+	</div>
 </body>
 </html>

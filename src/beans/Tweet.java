@@ -6,6 +6,7 @@ import java.util.Date;
 
 public class Tweet {
 	
+	private int id;
 	private String mensagem;
 	private Usuario dono;
 	private Date data;
@@ -34,6 +35,12 @@ public class Tweet {
 	}
 	public void setData(Date data) {
 		this.data = data;
+	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
 	}
 	
 	

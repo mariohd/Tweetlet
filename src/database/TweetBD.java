@@ -35,7 +35,7 @@ public class TweetBD {
 		PreparedStatement st;
 		try {
 			st = conexao
-					.prepareStatement("select t.corpo, t.id_usuario, u.login, t.data_envio from tweets as t, users as u where t.id_usuario = u.id order  by t.data_envio desc;");
+					.prepareStatement("select t.id_tweet ,t.corpo, t.id_usuario, u.login, t.data_envio from tweets as t, users as u where t.id_usuario = u.id order  by t.data_envio desc;");
 			ResultSet rs = st.executeQuery();
 			while (rs.next()) {
 				tweets.add(resultSetToTweet(rs));
@@ -57,7 +57,34 @@ public class TweetBD {
 		user.setLogin(rs.getString("login"));
 		String mensagem = rs.getString("corpo");
 		Date data = rs.getTimestamp("data_envio");
-		return new Tweet(mensagem, user, data);
+		Tweet tweet = new Tweet(mensagem, user, data);
+		tweet.setId(rs.getInt("id_tweet"));
+		return tweet;
+	}
+
+	public void retweeter(int idTweet, Usuario user) {
+		Tweet tweet = getTweet(idTweet);
+		tweet.setMensagem("RT> @"+ tweet.getDono().getLogin() + " / " + tweet.getMensagem());
+		tweet.setDono(user);
+		inserirTweet(tweet);
+	}
+	
+	public Tweet getTweet(int id) {
+		Connection conexao = BDFactory.getConnection();
+		PreparedStatement st;
+		Tweet tweet = null;
+		try {
+			st = conexao
+					.prepareStatement("select t.id_tweet ,t.corpo, t.id_usuario, u.login, t.data_envio from tweets as t, users as u where t.id_usuario = u.id and t.id_tweet ="+id+ " order  by t.data_envio desc;");
+			ResultSet rs = st.executeQuery();
+			if (rs.next()) {
+				tweet =resultSetToTweet(rs);
+			}
+			return tweet;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 }

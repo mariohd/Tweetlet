@@ -5,3 +5,15 @@
 	font-family: sans-serif;
 	font-size: x-small;
 }
+
+#todosTweetlets{
+	border-style: groove;
+	border-radius: 4px;
+}
+
+#TweetletCompleto{
+	border-style: groove;
+	border-radius: 3px;
+	padding-left: 5px;
+	padding-right: 5px;
+}
