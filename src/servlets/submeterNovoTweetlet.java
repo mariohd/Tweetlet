@@ -1,6 +1,7 @@
 package servlets;
 
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -46,7 +47,7 @@ public class submeterNovoTweetlet extends HttpServlet {
 		if (usuario != null){
 			TweetBD tBD = new TweetBD();
 			String respostaEnvio = "";
-			if (tBD.inserirTweet(new Tweet(mensagem, usuario))){
+			if (tBD.inserirTweet(new Tweet(mensagem, usuario, new Date()))){
 				respostaEnvio = "Tweetlet enviado.";
 			}
 			else{

@@ -10,24 +10,27 @@
 <title>Tweetlets - Inicio</title>
 </head>
 <body>
-	<div id=mensagemBoasVindas>
-		<label>${mensagemBoasVindas }</label>
-	</div>
-	<div id=menuNovoTweelet>
-		<form action="submeterNovoTweetlet" method="post">
-			<center>
+	<div>
+		<c:import url="cabecalho.jsp"></c:import>
+		<div id=mensagemBoasVindas>
+			<label>${mensagemBoasVindas }</label>
+		</div>
+		<div id=menuNovoTweelet>
+			<form action="submeterNovoTweetlet" method="post">
 				<br /> Tweetlet! <br />
-				<textarea rows="4" cols=40 id=novoTweetlet name=novoTweetlet></textarea>
-				<br />
+				<textarea rows="4" cols=40 id=novoTweetlet name=novoTweetlet></textarea><br />
 				<button type="submit">Enviar</button>
-			</center>
-		</form>
+			</form>
+			<c:if test='${respostaEnvio != null }'>
+				<label id=afirmativa>${respostaEnvio }</label>
+			</c:if>
+		</div>
+		<div id=listaTweetlets>
+			<c:import url="timelineTweetlets.jsp" />
+		</div>
+<!-- 				<div> -->
+<%-- 					<c:import url="rodape.jsp"></c:import> --%>
+<!-- 				</div> -->
 	</div>
-	<div id=listaTweetlets>
-		<c:import url="leituratweetlets.jsp" />
-	</div>
-	<c:if test='${respostaEnvio != null }'>
-		<label id=afirmativa>${respostaEnvio }</label>
-	</c:if>
 </body>
 </html>
