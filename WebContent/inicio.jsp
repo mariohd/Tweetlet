@@ -8,6 +8,20 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
 <meta name="author" content="">
+<script type="text/javascript" src=bootstrap/js/jquery-1.8.0.min.js></script>
+<script type="text/javascript">
+	$(function() {
+
+			$("#fadein").toggle(
+	                   function() {
+	                           $("div#tweetRespondido").fadeIn(); // ou slideDown()
+	                   },
+	                   function() {
+	                           $("div#tweetRespondido").fadeOut(); // ou slideUp()
+	                   }
+	           );
+	});
+</script>
 <!-- Le styles -->
 <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
 <style type="text/css">
@@ -34,7 +48,7 @@ body {
 
 <body>
 
-<c:import url="cabecalho.jsp"></c:import>
+	<c:import url="cabecalho.jsp"></c:import>
 
 	<div class="container-fluid">
 		<div class="row-fluid">
@@ -68,8 +82,17 @@ body {
 							<div id=tweetletOwner>
 								${tweet.dono.login } <br /> ${tweet.data }
 							</div>
-							<c:if test="${resposta == true }">
-								Em resposta ao ${idRespondido }
+							<c:if test="${tweet.emResposta == true}">
+								<button id=fadein style="float: left">
+									<i class="icon-pencil"></i>
+								</button>
+								<div id=tweetRespondido hidden="true">
+									<c:forEach var="tweetRespondido" items="${tweetRespondidos }">
+										<c:if test="${tweet.tweetIdRespondido ==  tweetRespondido.id}">
+									${tweetRespondido.mensagem }
+								</c:if>
+									</c:forEach>
+								</div>
 							</c:if>
 							<c:if test="${tweet.mensagem != 'Nenhum Tweetlet ainda.'}">
 								<div id=acoesTweetlet>
@@ -107,19 +130,5 @@ body {
 	<!-- Le javascript
     ================================================== -->
 	<!-- Placed at the end of the document so the pages load faster -->
-	<script src="../assets/js/jquery.js"></script>
-	<script src="../assets/js/bootstrap-transition.js"></script>
-	<script src="../assets/js/bootstrap-alert.js"></script>
-	<script src="../assets/js/bootstrap-modal.js"></script>
-	<script src="../assets/js/bootstrap-dropdown.js"></script>
-	<script src="../assets/js/bootstrap-scrollspy.js"></script>
-	<script src="../assets/js/bootstrap-tab.js"></script>
-	<script src="../assets/js/bootstrap-tooltip.js"></script>
-	<script src="../assets/js/bootstrap-popover.js"></script>
-	<script src="../assets/js/bootstrap-button.js"></script>
-	<script src="../assets/js/bootstrap-collapse.js"></script>
-	<script src="../assets/js/bootstrap-carousel.js"></script>
-	<script src="../assets/js/bootstrap-typeahead.js"></script>
-
 </body>
 </html>

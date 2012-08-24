@@ -18,9 +18,11 @@ public class TweetBD {
 		PreparedStatement st;
 		try {
 			st = conexao
-					.prepareStatement("INSERT INTO `Tweetlet`.`tweets`(`corpo`,`id_usuario`) VALUES(?,?);");
+					.prepareStatement("INSERT INTO `Tweetlet`.`tweets`(`corpo`,`id_usuario`, resposta, id_respondido) VALUES(?,?,?,?);");
 			st.setString(1, novoTweet.getMensagem());
 			st.setInt(2, novoTweet.getDono().getId());
+			st.setBoolean(3, novoTweet.isEmResposta());
+			st.setInt(4, novoTweet.getTweetIdRespondido());
 			st.execute();
 			return true;
 		} catch (SQLException e) {
@@ -35,7 +37,7 @@ public class TweetBD {
 		PreparedStatement st;
 		try {
 			st = conexao
-					.prepareStatement("select t.id_tweet ,t.corpo, t.id_usuario, u.login, t.data_envio from tweets as t, users as u where t.id_usuario = u.id order  by t.data_envio desc;");
+					.prepareStatement("select t.id_tweet ,t.corpo, t.id_usuario, u.login, t.data_envio, t.resposta, t.id_respondido from tweets as t, users as u where t.id_usuario = u.id order  by t.data_envio desc");
 			ResultSet rs = st.executeQuery();
 			while (rs.next()) {
 				tweets.add(resultSetToTweet(rs));
@@ -59,6 +61,8 @@ public class TweetBD {
 		Date data = rs.getTimestamp("data_envio");
 		Tweet tweet = new Tweet(mensagem, user, data);
 		tweet.setId(rs.getInt("id_tweet"));
+		tweet.setEmResposta(rs.getBoolean("resposta"));
+		tweet.setTweetIdRespondido(rs.getInt("id_respondido"));
 		return tweet;
 	}
 
@@ -75,10 +79,10 @@ public class TweetBD {
 		Tweet tweet = null;
 		try {
 			st = conexao
-					.prepareStatement("select t.id_tweet ,t.corpo, t.id_usuario, u.login, t.data_envio from tweets as t, users as u where t.id_usuario = u.id and t.id_tweet ="+id+ " order  by t.data_envio desc;");
+					.prepareStatement("select t.id_tweet ,t.corpo, t.id_usuario, u.login, t.data_envio, t.resposta, t.id_respondido from tweets as t, users as u where t.id_usuario = u.id and t.id_tweet ="+id+ " order  by t.data_envio desc;");
 			ResultSet rs = st.executeQuery();
 			if (rs.next()) {
-				tweet =resultSetToTweet(rs);
+				tweet = resultSetToTweet(rs);
 			}
 			return tweet;
 		} catch (SQLException e) {
