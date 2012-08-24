@@ -50,4 +50,14 @@
     <servlet-name>responderTweet</servlet-name>
     <url-pattern>/responderTweet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>submeterRespostaTweetlet</display-name>
+    <servlet-name>submeterRespostaTweetlet</servlet-name>
+    <servlet-class>servlets.submeterRespostaTweetlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>submeterRespostaTweetlet</servlet-name>
+    <url-pattern>/submeterRespostaTweetlet</url-pattern>
+  </servlet-mapping>
 </web-app>

@@ -10,12 +10,16 @@ public class Tweet {
 	private String mensagem;
 	private Usuario dono;
 	private Date data;
+	private boolean emResposta;
+	private int tweetIdRespondido;
 	
 	public Tweet(String mensagem, Usuario dono, Date data) {
 		super();
 		this.mensagem = mensagem;
 		this.dono = dono;
 		this.setData(data);
+		this.setEmResposta(false);
+		setTweetIdRespondido(0);
 	}
 	public String getMensagem() {
 		return mensagem;
@@ -41,6 +45,18 @@ public class Tweet {
 	}
 	public void setId(int id) {
 		this.id = id;
+	}
+	public boolean isEmResposta() {
+		return emResposta;
+	}
+	public void setEmResposta(boolean emResposta) {
+		this.emResposta = emResposta;
+	}
+	public int getTweetIdRespondido() {
+		return tweetIdRespondido;
+	}
+	public void setTweetIdRespondido(int tweetIdRespondido) {
+		this.tweetIdRespondido = tweetIdRespondido;
 	}
 	
 	

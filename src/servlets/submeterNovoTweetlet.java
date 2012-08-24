@@ -55,7 +55,8 @@ public class submeterNovoTweetlet extends HttpServlet {
 			}
 			List<Tweet> tweets = tBD.getTweets();
 			sessao.setAttribute("tweets", tweets);
-			sessao.setAttribute("respostaEnvio", respostaEnvio);
+			sessao.setAttribute("respostaEnvio", respostaEnvio);			
+			sessao.setAttribute("resposta", false);
 			dispatcher = request.getRequestDispatcher("/inicio.jsp");
 			dispatcher.forward(request, response);
 		}else{

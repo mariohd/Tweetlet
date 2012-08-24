@@ -6,6 +6,8 @@
 <head>
 <link rel=StyleSheet href="css/timeline.css" type="text/css"
 	media=screen>
+<link href="bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
+<script src="bootstrap/js/bootstrap.min.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
@@ -16,6 +18,7 @@
 				<div id=tweetletBody>${tweet.mensagem }</div>
 				<br />
 				<div id=tweetletOwner>
+				<c:if test="${resposta != null}"></c:if>
 					${tweet.dono.login } <br /> ${tweet.data }
 				</div>
 				<br /> <br />
@@ -23,13 +26,13 @@
 					<form method="post" action="retweeter">
 						<input type="hidden" value="${tweet.id }" id=tweetId name=tweetId>
 						<button type="submit" class=retweet>
-							<img src="imagens/retweelet.png" height="18" width="18" />
+							<i class="icon-share"></i>
 						</button>
 					</form>
 					<form method="post" action="responderTweet">
 						<input type="hidden" value="${tweet.id }" id=tweetId name=tweetId>
 						<button type="submit">
-							<img src="imagens/resposta.png" height="18" width="18" />
+							<i class="icon-edit"></i>
 						</button>
 					</form>
 				</div>
