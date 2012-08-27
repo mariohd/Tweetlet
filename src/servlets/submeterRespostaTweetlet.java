@@ -47,7 +47,7 @@ public class submeterRespostaTweetlet extends HttpServlet {
 		Usuario usuario = (Usuario) sessao.getAttribute("usuario");
 		TweetBD tBD = new TweetBD();
 		Tweet tweetRespondido = tBD.getTweet(Integer.parseInt(request.getParameter("tweetRespondidoID")));
-		List<Tweet> respondidos = (List) sessao.getAttribute("tweetRespondidos");
+		List<Tweet> respondidos = (List) sessao.getAttribute("tweetRespondidos");	
 		if (respondidos == null){
 			respondidos = new ArrayList<Tweet>();
 			sessao.setAttribute("tweetRespondidos",respondidos);

@@ -12,14 +12,11 @@
 <script type="text/javascript">
 	$(function() {
 
-			$("#fadein").toggle(
-	                   function() {
-	                           $("div#tweetRespondido").fadeIn(); // ou slideDown()
-	                   },
-	                   function() {
-	                           $("div#tweetRespondido").fadeOut(); // ou slideUp()
-	                   }
-	           );
+		$("#fadein").toggle(function() {
+			$("div#tweetRespondido").fadeIn(); // ou slideDown()
+		}, function() {
+			$("div#tweetRespondido").fadeOut(); // ou slideUp()
+		});
 	});
 </script>
 <!-- Le styles -->
@@ -82,18 +79,6 @@ body {
 							<div id=tweetletOwner>
 								${tweet.dono.login } <br /> ${tweet.data }
 							</div>
-							<c:if test="${tweet.emResposta == true}">
-								<button id=fadein style="float: left">
-									<i class="icon-pencil"></i>
-								</button>
-								<div id=tweetRespondido hidden="true">
-									<c:forEach var="tweetRespondido" items="${tweetRespondidos }">
-										<c:if test="${tweet.tweetIdRespondido ==  tweetRespondido.id}">
-									${tweetRespondido.mensagem }
-								</c:if>
-									</c:forEach>
-								</div>
-							</c:if>
 							<c:if test="${tweet.mensagem != 'Nenhum Tweetlet ainda.'}">
 								<div id=acoesTweetlet>
 									<form method="post" action="retweeter"
@@ -112,6 +97,18 @@ body {
 										</button>
 									</form>
 								</div>
+								<c:if test="${tweet.emResposta == true}">
+								<button id=fadein style="float: left">
+									<i class="icon-pencil"></i>
+								</button>
+								<div id=tweetRespondido hidden="true">
+									<c:forEach var="tweetRespondido" items="${tweetRespondidos }">
+										<c:if test="${tweet.tweetIdRespondido ==  tweetRespondido.id}">
+									<br />${tweetRespondido.mensagem }
+								</c:if>
+									</c:forEach>
+								</div>
+							</c:if>
 							</c:if>
 						</div>
 					</div>
